@@ -1,17 +1,10 @@
-from selenium import webdriver
 from bs4 import BeautifulSoup
 import re
-import pandas
 import requests
 
-options = webdriver.ChromeOptions()
-options.add_experimental_option("excludeSwitches", ["enable-logging"])
 
-driver = webdriver.Chrome('./chromedriver')
-
-driver.get('https://maple.gg/guild/elysium/%ED%9D%91%EB%AC%98')
-html = driver.page_source
-soup = BeautifulSoup(html, 'html.parser')
+guild_page = requests.get('https://maple.gg/guild/elysium/%ED%9D%91%EB%AC%98/members?sort=level')
+soup = BeautifulSoup(guild_page.content, 'html.parser')
 guild_content = soup.find_all(class_ = 'col-lg-3 col-md-6 col-sm-6 mt-4')
 
 csv_mode = True
