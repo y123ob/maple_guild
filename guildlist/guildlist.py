@@ -4,7 +4,7 @@ import re
 import requests
 import time
 
-guild_name = '주장'
+guild_name = '흑묘'
 guild_name_enc = parse.quote(guild_name)
 
 time1 = time.time()
